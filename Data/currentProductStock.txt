@@ -1,0 +1,9 @@
+﻿Mars,8,snack
+Snickers,8,snack
+AfterEight,27,snack
+Pepsi Max,12,drink
+Coca-Cola,12,drink
+Oatley,14,drink
+RedBull,13,drink
+Unicorn,39,toy
+Yo-yo,95,toy
