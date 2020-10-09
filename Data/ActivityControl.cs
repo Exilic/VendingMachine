@@ -34,7 +34,15 @@ namespace VendingMachine.Data
 
         public static void BuyProduct(char keyPush, char latestKeyPush)
         {
-            Vending.DetailTheExchange(keyPush, latestKeyPush);
+            if (ProductStock.CheckSupply(keyPush))
+            {
+                Vending.DetailTheExchange(keyPush, latestKeyPush);
+            }
+            else
+            {
+                Console.WriteLine($"We have run out of {ProductStock.ShowProductInfo(keyPush).ProductName}");
+            }
+            
         }
        
         public static void ReceiveMessage(string message)

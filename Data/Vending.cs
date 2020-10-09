@@ -13,18 +13,32 @@ namespace VendingMachine.Data
         private static int debtToCustomer;
 
      
-        public static void RegisterSoldItem()
+        public static void RegisterSoldItem(char keyPush)
         {
 
         }
 
         public static void DetailTheExchange(char keyPush, char preceedingKeyPush)
         {
-            int productPrice = ProductStock.FindProductPriceByNumber(keyPush);
-            if (debtToCustomer > productPrice)
-            {
+            
 
+            if (debtToCustomer > ProductStock.ShowProductInfo(keyPush).ProductPrice)
+            {
+                if (keyPush == preceedingKeyPush && previous message was "Push to confirm ")
+                {
+                    RegisterSoldItem(keyPush);
+                }
+                else
+                {
+                    Console.WriteLine($"Push {keyPush} to confirm buy"); 
+                }
             }
+            else
+            {
+                Console.WriteLine($"You miss by {debtToCustomer - ProductStock.ShowProductInfo(keyPush).ProductPrice}kr");
+            }
+            
+            
         }
 
         public static void SettleDebtToCustomer()
