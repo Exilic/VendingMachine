@@ -1,3 +1,3 @@
 # VendingMachine
 
-![alt text](https://github.com/Exilic/VendingMachine/VendingMachine.svg?raw=true)
+![alt text](https://raw.githubusercontent.com/Exilic/VendingMachine/master/VendingMachine.svg)
