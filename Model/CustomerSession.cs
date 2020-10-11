@@ -11,41 +11,27 @@ namespace VendingMachine.Model
     public class CustomerSession
     {
 
-        private string customerSessionID;
-
-        private string customerSessionDuration;
+        private DateTime customerSessionID;
 
         private string customerSessionExchangDetails;
 
 
-
-
-        public CustomerSession(string timeStamp)
+        public CustomerSession(DateTime timeStamp)
         {
             customerSessionID = timeStamp;
         }
 
-        public void GetCustomerSessionID()
+        public DateTime CustomerSessionID
         {
-
+            get { return customerSessionID; }
         }
 
-        public void GetCustomerSessionDuration()
+        public void WriteCustomerSessionExchangDetails(string sessionActivity)
         {
-
+            customerSessionExchangDetails = customerSessionExchangDetails + "," + sessionActivity;
         }
 
-        public void SetCustomerSessionDuration()
-        {
-
-        }
-
-        public void GetCustomerSessionExchangDetails()
-        {
-
-        }
-
-        public void SetCustomerSessionExchangDetails()
+        public void EndCustomerSession(DateTime timeStamp)
         {
 
         }

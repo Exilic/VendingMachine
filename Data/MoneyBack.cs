@@ -16,13 +16,14 @@ namespace VendingMachine.Data
         public static void CollectFullAmount(int[] debtToCustomer) //This represents the physical action
         {
             int[] coinReturn = { debtToCustomer[7], debtToCustomer[6], debtToCustomer[5] };
-            int[] banknoteReturn = { debtToCustomer[4], debtToCustomer[3], debtToCustomer[2], debtToCustomer[1], debtToCustomer[] };
+            int[] banknoteReturn = { debtToCustomer[4], debtToCustomer[3], debtToCustomer[2], debtToCustomer[1], debtToCustomer[0] };
             ReleaseFullAmount(coinReturn, banknoteReturn);
             
         }
 
         public static void ReleaseFullAmount(int[] coinReturn, int[] banknoteReturn) //This represents the physical action
         {
+            Vending.BalanceDebtByMoneyBack();
             amountToReturn = 0; 
         }
 

@@ -4,22 +4,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class ProductDelivery {
+namespace VendingMachine.Data
+{
 
-    
-    private int slotList;
+    public class ProductDelivery
+    {
 
 
-    public void ReceiveDeliveryOrder() {
-        
+        private static int slotList;
+
+
+        public static void ReceiveDeliveryOrder(int slotNumber)
+        {
+
+        }
+
+        public static void RunSlotMechanics()
+        {
+
+        }
+
+        public static void CheckResult()
+        {
+
+        }
     }
-
-    public void RunSlotMechanics() {
-        
-    }
-
-    public void CheckResult() {
-        
-    }
-
 }

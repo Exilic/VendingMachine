@@ -23,7 +23,7 @@ namespace VendingMachine.Data
 
         protected static void AddToMoneyHeld(int moneyInserted)
         {
-            moneyHeld -= moneyInserted;
+            moneyHeld += moneyInserted;
         }
 
         protected static void ReturnInvalidInsertion(int moneyInserted)
@@ -33,7 +33,7 @@ namespace VendingMachine.Data
 
         protected static void SendMessage(string message)
         {
-            ActivityControl.ReceiveMessage(message);
+            ActivityControl.ConcatenateCurrentMessage(message);
         }
 
         public static int RevealMoneyHeld()

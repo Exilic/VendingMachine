@@ -12,33 +12,34 @@ namespace VendingMachine.Data
 
         private static int debtToCustomer;
 
-     
-        public static void RegisterSoldItem(char keyPush)
+        public static void DetailTheExchange(int keyPush, int preceedingKeyPush)
         {
-
-        }
-
-        public static void DetailTheExchange(char keyPush, char preceedingKeyPush)
-        {
-            
-
             if (debtToCustomer > ProductStock.ShowProductInfo(keyPush).ProductPrice)
             {
-                if (keyPush == preceedingKeyPush && previous message was "Push to confirm ")
+                if (keyPush == preceedingKeyPush && Display.RevealCurrentMessage().Contains("to confirm"))
                 {
-                    RegisterSoldItem(keyPush);
+                    ProductStock.SendProduct(keyPush);
+                    debtToCustomer -= ProductStock.ShowProductInfo(keyPush).ProductPrice;
                 }
                 else
                 {
-                    Console.WriteLine($"Push {keyPush} to confirm buy"); 
+                    ActivityControl.ConcatenateCurrentMessage($"Push {keyPush} to confirm buy"); 
                 }
             }
             else
             {
-                Console.WriteLine($"You miss by {debtToCustomer - ProductStock.ShowProductInfo(keyPush).ProductPrice}kr");
+                ActivityControl.ConcatenateCurrentMessage($"You miss by {debtToCustomer - ProductStock.ShowProductInfo(keyPush - 1).ProductPrice}kr");
             }
-            
-            
+        }
+
+        public static void IncreaseDebtToCustomer(int moneyInserted)
+        {
+            debtToCustomer += moneyInserted;
+        }
+
+        public static void BalanceDebtByMoneyBack()
+        {
+            debtToCustomer = 0;
         }
 
         public static void SettleDebtToCustomer()

@@ -7,6 +7,6 @@ using System.Text;
 public class ServiceLog : UseLogs {
 
     
-    public txt serviceLog;
+    public string serviceLog;
 
 }

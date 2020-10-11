@@ -1,4 +1,6 @@
 ﻿using System;
+using VendingMachine.Data;
+using VendingMachine.Model;
 
 namespace VendingMachine
 {
@@ -7,9 +9,8 @@ namespace VendingMachine
         static void Main(string[] args)
         {
 
-            DateTime sessionStart = DateTime.Now;
-            
-            Console.WriteLine(DateTime.Now);
+          
+
         }
     }
 }

@@ -17,38 +17,40 @@ namespace VendingMachine.Data
 
         public static void ReceiveAmount(int moneyInserted)
         {
+            Vending.IncreaseDebtToCustomer(moneyInserted);
+
             switch (moneyInserted)
             {
                 case 1:
-                    moneyAvailable[7] = moneyAvailable[7]++;
+                    moneyAvailable[7]++;
                     break;
 
                 case 5:
-                    moneyAvailable[6] = moneyAvailable[6]++;
+                    moneyAvailable[6]++;
                     break;
 
                 case 10:
-                    moneyAvailable[5] = moneyAvailable[5]++;
+                    moneyAvailable[5]++;
                     break;
 
                 case 20:
-                    moneyAvailable[4] = moneyAvailable[4]++;
+                    moneyAvailable[4]++;
                     break;
 
                 case 50:
-                    moneyAvailable[3] = moneyAvailable[3]++;
+                    moneyAvailable[3]++;
                     break;
 
                 case 100:
-                    moneyAvailable[2] = moneyAvailable[2]++;
+                    moneyAvailable[2]++;
                     break;
 
                 case 500:
-                    moneyAvailable[1] = moneyAvailable[1]++;
+                    moneyAvailable[1]++;
                     break;
 
                 case 1000:
-                    moneyAvailable[0] = moneyAvailable[0]++;
+                    moneyAvailable[0]++;
                     break;
 
                 default:
@@ -76,7 +78,7 @@ namespace VendingMachine.Data
         {
             for (int i = 0; i < 8; i++)
             {
-                moneyAvailable[i] = moneyAvailable[i] - debtToCustomer[i];
+                moneyAvailable[i] -= debtToCustomer[i];
             }
 
             MoneyBack.CollectFullAmount(debtToCustomer);

@@ -6,13 +6,14 @@ using VendingMachine.Data;
 
 namespace VendingMachine.Model
 {
-    public class Product
+    public abstract class Product
     {
         protected string productName;
         protected int productPrice;
-         
 
-        public Product(string productName, int productPrice)
+        public abstract void Use();
+
+        protected Product(string productName, int productPrice)
         {
             this.productName = productName;
             this.productPrice = productPrice;

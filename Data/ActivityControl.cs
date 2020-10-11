@@ -14,25 +14,24 @@ namespace VendingMachine.Data
     {
 
         // Activity state = [0] Operating, energy save mode [1] Time stamp
-        private static string[] activityState = new string[2];
+        private static string activityState;
         private static CustomerSession customer;
 
         public static string RevealActivityState()
         {
-            return activityState[0];
+            return activityState;
         }
 
         public static void RespondToCustomerActivity()
         {
-            if (activityState[0] == "energy save mode")
+            if (activityState == "energy save mode")
             {
-                activityState[0] = "Operating";
-                activityState[1] = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss");
-                customer = new CustomerSession(activityState[1]);
+                activityState = "Operating";
+                customer = new CustomerSession(DateTime.Now);
             }
         }
 
-        public static void BuyProduct(char keyPush, char latestKeyPush)
+        public static void BuyProduct(int keyPush, int latestKeyPush)
         {
             if (ProductStock.CheckSupply(keyPush))
             {
@@ -40,16 +39,11 @@ namespace VendingMachine.Data
             }
             else
             {
-                Console.WriteLine($"We have run out of {ProductStock.ShowProductInfo(keyPush).ProductName}");
+                ConcatenateCurrentMessage($"We have run out of {ProductStock.ShowProductInfo(keyPush).ProductName}");
             }
             
         }
        
-        public static void ReceiveMessage(string message)
-        {
-
-        }
-
         public static void AlertSecurity() //E-mail functionality is not fully developed, because it depends on outside conditions
         {
             string[] i = Array.ConvertAll(MoneyStock.RevealMoneyAvailable(), denom => denom.ToString());
@@ -83,8 +77,19 @@ namespace VendingMachine.Data
         }
     
 
-        public static void ConcatenateCurrentMessage()
+        public static void ConcatenateCurrentMessage(string message)
         {
+            Product product = ProductStock.ShowProductInfo(Keypad.newKeyPush);
+            if (message.Contains("to confirm") || message.Contains("miss by"))
+            {
+                Display.ChangeCurrentMessage(product.ProductName+ " for " + product.ProductPrice + ". " + message);
+            }
+            
+            else if (message.Contains("run out") || message.Contains("not recognized") || message.Contains("Enjoy"))
+            {
+                Display.ChangeCurrentMessage(message);
+            }
+
 
         }
 
@@ -92,7 +97,7 @@ namespace VendingMachine.Data
         {
             Vending.SettleDebtToCustomer();
             Display.PowerDownDisplay();
-            activityState[0] = "energy save mode";
+            activityState = "energy save mode";
         }
 
         public static void WriteActivityLog()

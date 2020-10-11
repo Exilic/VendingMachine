@@ -32,7 +32,11 @@ namespace VendingMachine.Data
             Console.WriteLine("Welcome");
             Console.WriteLine("You have {0} kr", Vending.RevealDebtToCustomer());
             Console.WriteLine(currentMessage);
-            
+        }
+
+        public static string RevealCurrentMessage()
+        {
+            return currentMessage;
         }
     }
 }

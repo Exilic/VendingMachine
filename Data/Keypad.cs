@@ -12,20 +12,26 @@ namespace VendingMachine.Data
 
         //There is a simple 0–9 keypad. Button 0 for ending the session. 1-9 for buying a product. 
 
-        public static char latestKeyPush;
+        public static int latestKeyPush;
+        public static int newKeyPush;
 
-        public static void RegisterKeyPush(char keyPush)
+        public static void RegisterKeyPush(int keyPush)
         {
+            latestKeyPush = newKeyPush;
+            newKeyPush = keyPush;
+
             ActivityControl.RespondToCustomerActivity();
             latestKeyPush = keyPush;
-            if (keyPush == '0')
+            if (keyPush == 0)
             {
                 ActivityControl.EndSession();
             }
             else
             {
-                ActivityControl.BuyProduct(keyPush, latestKeyPush);
+                ActivityControl.BuyProduct(newKeyPush, latestKeyPush);
             }
         }
+
+
     }
 }

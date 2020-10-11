@@ -12,7 +12,7 @@ namespace VendingMachine.Data
     {
 
 
-        public void RegisterValidCoin(int coinInsert)
+        public static void RegisterValidCoin(int coinInsert)
         {
             ActivityControl.RespondToCustomerActivity();
 

@@ -4,9 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class ActivityLog : UseLogs {
+namespace VendingMachine.Data
+{
 
-    
-    public txt activityLog;
 
+
+    public class ActivityLog : UseLogs
+    {
+
+
+        private string activityLog;
+    }
 }
